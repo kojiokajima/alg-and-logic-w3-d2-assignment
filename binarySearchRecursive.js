@@ -6,19 +6,15 @@ const fixedArray = testArray;
 const binarySearchRecursive = function (arr, target) {
     // initialize a variable(mid-index)
     let middle = Math.floor((arr.length) / 2);
-
+    
     // base case
     if (arr[middle] === target) {
         return fixedArray.indexOf(arr[middle]);
-    } else if (arr[middle] < target) {
-        // cut an original array and set in a new array
-        let newArray = arr.filter(element => element > arr[middle]);
-        return binarySearchRecursive(newArray, target);
     } else {
-        // cut an original array and set in a new array
-        let newArray = arr.filter(element => element < arr[middle]);
+        // cut an original array a half and set in a new array
+        let newArray = arr[middle] < target ? arr.filter(element => element > arr[middle]) 
+                                            : arr.filter(element => element < arr[middle]);
         return binarySearchRecursive(newArray, target);
     }
 }
-
-console.log(binarySearchRecursive(testArray, 27));
+console.log(binarySearchRecursive(testArray, 15));
